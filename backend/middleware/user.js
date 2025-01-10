@@ -16,11 +16,8 @@ const UserAuth = (req, res, next) => {
     try {
 
         const decoded = jwt.verify(token, Jwt_KEY);
-        if (decoded.username) {
-            req.userId = decoded.userId;
-            console.log(decoded);
-            next();
-        }
+        req.userId = decoded.userId;
+        next();
     } catch (e) {
         console.log(e);
     }

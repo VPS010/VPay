@@ -64,7 +64,7 @@ router.post("/signup", async (req, res) => {
 
     await Accounts.create({
         userid: dbuser._id,
-        balance: 1 + Math.random() + 10000
+        balance: (1 + Math.random()) * 10000
     })
 
 
@@ -79,7 +79,7 @@ router.post("/signup", async (req, res) => {
 
 
 
-router.post("/signin", (req, res) => {
+router.post("/signin",async (req, res) => {
 
     const { success } = signinSchema.safeParse(req.body);
     if (!success) {
@@ -88,13 +88,13 @@ router.post("/signin", (req, res) => {
         })
     }
 
-    const user = Users.findOne({
+    const user =await Users.findOne({
         username: req.body.username,
         password: req.body.password
     })
 
-    if (user._id) {
-        const token = jwt.sign({ userid: user._id }, Jwt_KEY);
+    if (user) {
+        const token = jwt.sign({ userId: user._id }, Jwt_KEY);
 
         res.json({
             token: token
@@ -110,7 +110,7 @@ router.post("/signin", (req, res) => {
 })
 
 
-router.put("/changePassword", UserAuth, async (req, res) => {
+router.put("/update", UserAuth, async (req, res) => {
 
     const { success } = updateSchema.safeParse(req.body);
     if (!success) {
@@ -123,14 +123,13 @@ router.put("/changePassword", UserAuth, async (req, res) => {
 
     try {
         const updates = {};
-
         if (firstName) updates.firstName = firstName;
         if (lastName) updates.lastName = lastName;
         if (password) {
             updates.password = password;
         }
-
-        const result = await User.updateOne({ _id: req.userId }, { $set: updates });
+        console.log(req.userId);
+        const result = await Users.updateOne({ _id: req.userId }, { $set: updates });
         res.json({
             message: "Updated successfully",
         })
