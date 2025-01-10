@@ -87,7 +87,7 @@ const Login = () => {
                   <WarningLink
                     label={"Don’t have an account yet?"}
                     buttonText={"Sign up"}
-                    to={"/signup"}
+                    to={"/"}
                   />
                 </form>
               </div>

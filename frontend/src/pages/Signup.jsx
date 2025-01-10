@@ -1,7 +1,47 @@
+import { useState } from "react";
 import { Button } from "../components/Button";
 import { InputBox } from "../components/InputBox";
 import { WarningLink } from "../components/WarningLink";
+import axios from "axios";
 const Signup = () => {
+  const [user, setUser] = useState({
+    username: "",
+    firstname: "",
+    lastname: "",
+    password: "",
+  });
+
+  const InputHandler = (e) => {
+    const { name, value } = e.target;
+
+    setUser((user) => ({
+      ...user,
+      [name]: value,
+    }));
+  };
+
+  const SignupHandler = (e) => {
+    e.preventDefault();
+    if (!user.username || !user.firstname || !user.lastname || !user.password) {
+      alert("All fields are required.");
+      return;
+    }
+  
+    axios
+      .post("http://localhost:3000/api/v1/user/signup", user)
+      .then((result) => {
+        localStorage.setItem("authorization", `Bearer ${result.data.token}`);
+        setUser({
+          username: "",
+          firstname: "",
+          lastname: "",
+          password: "",
+        });
+      })
+      .catch((e) => {
+        console.log("Signup error:", e.response?.data?.message || e.message); // Log error message from backend
+      });
+  };
   return (
     <>
       <section className="flex bg-gray-50 align-middle items-center justify-center ">
@@ -51,19 +91,35 @@ const Signup = () => {
                 <form className="space-y-4 md:space-y-6 text-left" action="#">
                   <InputBox
                     label={"Your email"}
+                    iname={"username"}
                     placeholder={"name@company.com"}
-                    onChange={"ook"}
+                    onChange={InputHandler}
+                    ivalue={user.username}
                   />
+                  <InputBox
+                    label={"First name"}
+                    iname={"firstname"}
+                    placeholder={"mukesh"}
+                    onChange={InputHandler}
+                    ivalue={user.firstname}
+                  />
+
+                  <InputBox
+                    label={"Last name"}
+                    iname={"lastname"}
+                    placeholder={"ambani"}
+                    onChange={InputHandler}
+                    ivalue={user.lastname}
+                  />
+
                   <InputBox
                     label={"Password"}
+                    iname={"password"}
+                    ivalue={user.password}
+                    onChange={InputHandler}
                     placeholder={"••••••••"}
-                    onChange={"ook"}
                   />
-                  <InputBox
-                    label={"Confirm password"}
-                    placeholder={"••••••••"}
-                    onChange={"ook"}
-                  />
+
                   <div className="flex items-start">
                     <div className="flex items-center h-5">
                       <input
@@ -86,11 +142,11 @@ const Signup = () => {
                       </label>
                     </div>
                   </div>
-                  <Button label={"Create an account"} onClick={"df"} />
+                  <Button label={"Create an account"} onClick={SignupHandler} />
                   <WarningLink
                     label={"Already have an account?"}
                     buttonText={"Login"}
-                    to={"/signin"}
+                    to={"/login"}
                   />
                 </form>
               </div>
