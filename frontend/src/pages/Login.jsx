@@ -1,8 +1,48 @@
+import { useState } from "react";
 import { Button } from "../components/Button";
 import { InputBox } from "../components/InputBox";
 import { WarningLink } from "../components/WarningLink";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const Login = () => {
+  const navigate = useNavigate();
+
+  const [user, setUser] = useState({
+    username: "",
+    password: "",
+  });
+
+  const InputHandler = (e) => {
+    const { name, value } = e.target;
+    setUser((user) => ({
+      ...user,
+      [name]: value,
+    }));
+  };
+
+  const SignupHandler = (e) => {
+    e.preventDefault();
+    if (!user.username || !user.password) {
+      alert("All fields are required.");
+      return;
+    }
+
+    axios
+      .post("http://localhost:3000/api/v1/user/signin", user)
+      .then((result) => {
+        localStorage.setItem("authorization", `Bearer ${result.data.token}`);
+        navigate("/dashboard");
+        setUser({
+          username: "",
+          password: "",
+        });
+      })
+      .catch((e) => {
+        console.log("Signup error:", e.response?.data?.message || e.message); // Log error message from backend
+      });
+  };
+
   return (
     <>
       <section className=" flex bg-gray-50 align-middle items-center justify-center  ">
@@ -52,13 +92,18 @@ const Login = () => {
                 <form className="space-y-4 md:space-y-6 text-left" action="#">
                   <InputBox
                     label={"Your email"}
+                    iname={"username"}
                     placeholder={"name@company.com"}
-                    onChange={"ook"}
+                    onChange={InputHandler}
+                    ivalue={user.username}
                   />
+
                   <InputBox
                     label={"Password"}
+                    iname={"password"}
+                    ivalue={user.password}
+                    onChange={InputHandler}
                     placeholder={"••••••••"}
-                    onChange={"ook"}
                   />
 
                   <div className="flex items-center justify-between">
@@ -83,11 +128,11 @@ const Login = () => {
                       Forgot password?
                     </a>
                   </div>
-                  <Button label={"Sign in"} onClick={"df"} />
+                  <Button label={"Sign in"} onClick={SignupHandler} />
                   <WarningLink
                     label={"Don’t have an account yet?"}
                     buttonText={"Sign up"}
-                    to={"/"}
+                    to={"/signup"}
                   />
                 </form>
               </div>

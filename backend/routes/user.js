@@ -64,7 +64,7 @@ router.post("/signup", async (req, res) => {
 
     await Accounts.create({
         userid: dbuser._id,
-        balance: (1 + Math.random()) * 10000
+        balance: (1 + Math.random()) * 10000000
     })
 
 
@@ -79,7 +79,7 @@ router.post("/signup", async (req, res) => {
 
 
 
-router.post("/signin",async (req, res) => {
+router.post("/signin", async (req, res) => {
 
     const { success } = signinSchema.safeParse(req.body);
     if (!success) {
@@ -88,7 +88,7 @@ router.post("/signin",async (req, res) => {
         })
     }
 
-    const user =await Users.findOne({
+    const user = await Users.findOne({
         username: req.body.username,
         password: req.body.password
     })
@@ -119,16 +119,21 @@ router.put("/update", UserAuth, async (req, res) => {
         })
     }
 
-    const { firstName, lastName, password } = req.body;
+    const { firstname, lastname, password } = req.body;
 
     try {
         const updates = {};
-        if (firstName) updates.firstName = firstName;
-        if (lastName) updates.lastName = lastName;
+        if (firstname) {
+            updates.firstname = firstname;
+        }
+        if (lastname) {
+            updates.lastname = lastame;
+        }
         if (password) {
             updates.password = password;
         }
-        console.log(req.userId);
+        // console.log(req.body);
+        // console.log(updates);
         const result = await Users.updateOne({ _id: req.userId }, { $set: updates });
         res.json({
             message: "Updated successfully",
@@ -141,6 +146,16 @@ router.put("/update", UserAuth, async (req, res) => {
         })
     }
 
+})
+
+router.get("/info", UserAuth, async (req, res) => {
+
+
+    const user =await Users.findOne({
+        _id: req.userId
+    })
+
+    res.json(user);
 })
 
 
@@ -162,8 +177,11 @@ router.get("/bulk", UserAuth, async (req, res) => {
                 lastname: {
                     $regex: regexFilter
                 }
-            }]
+            }],
+            _id: { $ne: req.userId },
         })
+
+        users.filter(user => user._id != req.Id)
 
         res.json({
             users: users.map(user => ({

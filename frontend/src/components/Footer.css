@@ -1,0 +1,33 @@
+
+.footer {
+    opacity: 0.9;
+    background-color: #eeeded;
+    color: #162a49;
+    padding: 15px 0;
+    text-align: center;
+    width: 100%;
+    margin: 0;
+    margin-bottom: 0px;
+    position: relative;
+    bottom: 0px;
+    border-radius: 5px;
+  }
+  
+  .social-media {
+    margin-bottom: 10px;
+  }
+  
+  .social-media a {
+    margin: 0 10px;
+    font-size: 1.5rem;
+    transition: color 0.3s ease;
+  }
+  
+  .social-media a:hover {
+    color: #408dff;
+  }
+  
+  .copyright {
+    font-size: 1rem;
+  }
+  

@@ -2,8 +2,12 @@ import { useState } from "react";
 import { Button } from "../components/Button";
 import { InputBox } from "../components/InputBox";
 import { WarningLink } from "../components/WarningLink";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 const Signup = () => {
+
+  const navigate = useNavigate();
+
   const [user, setUser] = useState({
     username: "",
     firstname: "",
@@ -31,6 +35,7 @@ const Signup = () => {
       .post("http://localhost:3000/api/v1/user/signup", user)
       .then((result) => {
         localStorage.setItem("authorization", `Bearer ${result.data.token}`);
+        navigate('/dashboard')
         setUser({
           username: "",
           firstname: "",
