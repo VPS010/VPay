@@ -27,7 +27,7 @@ router.get("/balance", UserAuth, async (req, res) => {
 
 
 router.post("/transfer", UserAuth, async (req, res) => {
-    console.log(req.body);
+    // console.log(req.body);
     const { success } = transferSchema.safeParse(req.body);
     if (!success) {
         return res.status(400).json({ msg: "Invalid transfer details" });
