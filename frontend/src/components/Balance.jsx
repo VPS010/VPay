@@ -13,7 +13,7 @@ export const Balance = ({ value }) => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3000/api/v1/user/info", {
+      .get("https://v-pay-api.vercel.app/api/v1/user/info", {
         headers: {
           authorization: token,
         },

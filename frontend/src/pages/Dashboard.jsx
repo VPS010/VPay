@@ -17,7 +17,7 @@ const Dashboard = () => {
     }
 
     axios
-      .get("http://localhost:3000/api/v1/account/balance", {
+      .get("https://v-pay-api.vercel.app/api/v1/account/balance", {
         headers: {
           authorization: token,
         },

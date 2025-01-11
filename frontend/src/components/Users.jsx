@@ -14,7 +14,7 @@ export const Users = () => {
       return;
     }
     axios
-      .get("http://localhost:3000/api/v1/user/bulk?filter=" + filter, {
+      .get("https://v-pay-api.vercel.app/api/v1/user/bulk?filter=" + filter, {
         headers: {
           authorization: token,
         },

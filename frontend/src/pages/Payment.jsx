@@ -26,7 +26,7 @@ const Payment = () => {
       }
       console.log(token);
       await axios.post(
-        "http://localhost:3000/api/v1/account/transfer",
+        "https://v-pay-api.vercel.app/api/v1/account/transfer",
         {
           to: id,
           amount: parseFloat(amount),

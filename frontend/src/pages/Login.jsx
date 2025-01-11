@@ -29,7 +29,7 @@ const Login = () => {
     }
 
     axios
-      .post("http://localhost:3000/api/v1/user/signin", user)
+      .post("https://v-pay-api.vercel.app/api/v1/user/signin", user)
       .then((result) => {
         localStorage.setItem("authorization", `Bearer ${result.data.token}`);
         navigate("/dashboard");

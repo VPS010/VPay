@@ -37,7 +37,7 @@ const UpdateAccount = () => {
     }
 
     axios
-      .put("http://localhost:3000/api/v1/user/update", user, {
+      .put("https://v-pay-api.vercel.app/api/v1/user/update", user, {
         headers: {
           authorization: token,
         },
