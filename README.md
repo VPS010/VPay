@@ -16,7 +16,7 @@ VPay is a simple online transaction app prototype aimed at exploring the core fu
 ## Technologies Used
 
 - **Backend**: **Node.js**, **Express**, **JWT**, **Mongoose**, **MongoDB**.
-- **Frontend**: **React**, **Vite**.
+- **Frontend**: **React**, **Tailwind**, **Vite**.
 - **Transaction Management**: **MongoDB Transactions** for atomicity.
 
 
