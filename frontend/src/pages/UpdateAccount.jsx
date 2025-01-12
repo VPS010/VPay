@@ -12,6 +12,7 @@ const UpdateAccount = () => {
     password: "",
   });
 
+
   const InputHandler = (e) => {
     const { name, value } = e.target;
     // Trim spaces from the value, and if it's only spaces, set it to an empty string

@@ -132,8 +132,8 @@ router.put("/update", UserAuth, async (req, res) => {
         if (password) {
             updates.password = password;
         }
-        // console.log(req.body);
-        // console.log(updates);
+        //  console.log(req.body);
+        //  console.log(updates);
         const result = await Users.updateOne({ _id: req.userId }, { $set: updates });
         res.json({
             message: "Updated successfully",

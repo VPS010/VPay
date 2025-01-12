@@ -71,7 +71,7 @@ export const Users = () => {
           </g>{" "}
         </svg>
       </div>
-      <div className="flex relative flex-col h-[360px] justify-center z-20 ">
+      <div className="flex relative h-[380px] flex-col md:h-[362px] justify-center z-20 ">
         <div className="flex-grow rounded-md overflow-y-auto border p-4 justify-center">
           {users.length > 0 ? (
             users.map((user) => (
