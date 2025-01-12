@@ -20,11 +20,11 @@ export const AppBar = () => {
       <div className="flex flex-row justify-center h-full items-center">
         <Link to={"/"} className="flex">
           <img
-            className=" w-44 h-10 mr-2"
+            className=" w-44 h-10  md:mr-2"
             src="/Untitled_design__2___1_-removebg-preview.png"
             alt="logo"
           />
-          <p className="mt-2 ml-0 text-xl text-blue-950">
+          <p className="hidden sm:block md:mt-2 ml-0 text-xl text-blue-950">
             Secure Payments Simplified
           </p>
         </Link>

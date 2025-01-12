@@ -45,7 +45,7 @@ const Login = () => {
 
   return (
     <>
-      <section className=" flex bg-gray-50 align-middle items-center justify-center  ">
+      <section className="flex bg-gray-50 align-middle items-center justify-center  ">
         <div className="ml-52 mr-0 hidden md:block">
           <svg
             version="1.0"

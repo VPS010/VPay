@@ -47,7 +47,7 @@ const Payment = () => {
 
   return (
     <>
-      <div className="font-manrope flex h-screen w-full items-center bg-gray-50 justify-center">
+      <div className="font-manrope m-5 md:m-0 flex h-screen w-full items-center bg-gray-50 justify-center">
         <div className="mx-auto box-border rounded-lg w-[365px] shadow border bg-white p-4">
           <div className="flex items-center rounded-lg justify-between">
             <span className="text-[#1f9528] font-bold text-xl">

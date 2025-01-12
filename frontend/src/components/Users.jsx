@@ -44,7 +44,7 @@ export const Users = () => {
           className="w-full px-2 py-1  border-2 border-blue-200 rounded"
         ></input>
       </div>
-      <div className=" absolute flex items-center left-1/3 opacity-70 z-0">
+      <div className=" absolute flex items-center mt-12 md:mt-0 md:left-1/3 left-1/4 opacity-70 z-0">
         <svg
           version="1.0"
           xmlns="http://www.w3.org/2000/svg"
@@ -52,6 +52,7 @@ export const Users = () => {
           height="300.000000pt"
           viewBox="0 0 300.000000 300.000000"
           preserveAspectRatio="xMidYMid meet"
+          className="w-60 h-60"
         >
           {" "}
           <g
@@ -154,7 +155,23 @@ function User({ user }) {
             {user.firstname[0]}
           </div>
         </div>
-        <div className="flex flex-col justify-center h-ful">
+        <div
+          onClick={() => {
+            if (window.innerWidth < 640) {
+              navigate(
+                "/payment?id=" +
+                  user._id +
+                  "&name=" +
+                  user.firstname +
+                  "&lname=" +
+                  user.lastname +
+                  "&uname=" +
+                  user.username
+              );
+            }
+          }}
+          className="flex flex-col justify-center h-ful"
+        >
           <div className="text-xs  sm:text-base">
             {user.firstname} {user.lastname}
           </div>
@@ -176,7 +193,7 @@ function User({ user }) {
             );
           }}
           type="submit"
-          className="w-full text-white bg-blue-500 hover:bg-blue-600 focus:ring-2 focus:outline-none focus:ring-blue-200  font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+          className="w-full hidden sm:block text-white bg-blue-500 hover:bg-blue-600 focus:ring-2 focus:outline-none focus:ring-blue-200  font-medium rounded-lg text-sm px-5 py-2.5 text-center"
         >
           Send Money
         </button>

@@ -8,31 +8,33 @@ const LandingPage = () => {
   return (
     <>
       {/* Hello Section */}
-      <section className="flex h-screen bg-gray-50 align-middle flex-col items-center">
+      <section className="flex w-full h-screen bg-gray-50 align-middle flex-col items-center">
         {/* Appbar */}
         <div className="shadow h-14 w-full flex justify-between">
           <div className="flex flex-row justify-center h-full items-center">
             <Link to={"/"} className="flex">
               <img
-                className=" w-44 h-10 mr-2"
+                className=" w-44 h-10 md:mr-2"
                 src="/Untitled_design__2___1_-removebg-preview.png"
                 alt="logo"
               />
-              <p className="mt-2 ml-0 text-xl text-blue-950">
+              <p className="md:mt-2 ml-0 md:text-xl text-blue-950">
                 Secure Payments Simplified
               </p>
             </Link>
           </div>
         </div>
-        <div className="flex justify-between flex-row ">
-          <div className=" m-0 p-0 flex flex-col items-center ml-20 justify-center">
+        <div className="flex md:justify-between md:mt-16 flex-col md:flex-row ">
+          <div className=" m-0 p-0 flex flex-col items-center md:ml-20 justify-center">
             <svg
               version="1.0"
               xmlns="http://www.w3.org/2000/svg"
-              width="450.000000pt"
-              height="450.000000pt"
+              width="250.000000pt"
+              height="250.000000pt"
               viewBox="0 0 300.000000 300.000000"
               preserveAspectRatio="xMidYMid meet"
+              className="md:w-[450px] md:h-[450px]"
+            
             >
               {" "}
               <g
@@ -50,12 +52,12 @@ const LandingPage = () => {
                 <path d="M1757 1228 c56 -63 83 -116 83 -166 0 -31 5 -52 13 -54 26 -10 37 4 37 49 0 48 36 118 80 158 28 25 25 35 -10 35 -29 0 -44 -12 -84 -65 -9 -11 -16 -15 -16 -8 0 6 -12 25 -26 42 -20 24 -34 31 -62 31 l-35 0 20 -22z" />{" "}
               </g>{" "}
             </svg>
-            <p className="absolute mt-72 ml-0 text-2xl text-[#1cabdfd4] font-semibold ">
+            <p className="absolute mt-60 md:mt-72 ml-0 text-2xl text-[#1cabdfd4] font-semibold ">
               Secure Payments Simplified
             </p>
           </div>
-          <div className="flex flex-col justify-center items-center mr-20 ">
-            <div className="w-full text-xl">
+          <div className="flex flex-col  justify-center items-center md:mr-20 ">
+            <div className="md:w-full md:text-xl  m-4 mb-2 md:mb-4 md:m-0">
               Welcome to VPay, the hassle-free way to manage your money online.
               Create your account in seconds and receive a free surprise balance
               to get started! Send money instantly to friends and family with
@@ -63,18 +65,18 @@ const LandingPage = () => {
               rewarding—experience the future of online payments today
             </div>
             {token ? (
-              <div className="flex w-52 mt-5">
+              <div className="flex w-52 md:mt-5 justify-center">
                 <button
                   onClick={() => {
                     navigate("/dashboard");
                   }}
-                  className=" mx-2  text-white mt-0 px-5 mb-2 bg-[#1cabdfd4] hover:bg-[#4ba0bf] focus:ring-2 focus:outline-none focus:bg-[#1cabdfa4] font-medium rounded-lg  py-2 text-center"
+                  className=" md:mx-2  text-white mt-0 px-5 bg-[#1cabdfd4] hover:bg-[#4ba0bf] focus:ring-2 focus:outline-none focus:bg-[#1cabdfa4] font-medium rounded-lg  py-2 text-center"
                 >
                   Dashboard
                 </button>
               </div>
             ) : (
-              <div className="flex w-52 mt-5">
+              <div className="flex w-52 mt-1 md:mt-5">
                 <button
                   onClick={() => {
                     navigate("/login");

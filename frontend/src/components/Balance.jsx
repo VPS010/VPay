@@ -32,12 +32,12 @@ export const Balance = ({ value }) => {
 
   return (
     <div className="flex flex-col  ml-4 shadow ">
-      <div className="flex mx-2 font-medium text-4xl text-blue-950">{firstname}{" "}{lastname}</div>
+      <div className="flex mx-2 font-medium md:text-4xl text-2xl text-blue-950">{firstname}{" "}{lastname}</div>
       <div className="flex bg-white h-12 items-center rounded ">
-        <div className=" mx-2 font-bold text-xl text-blue-950">
-          Your balance
+        <div className=" mx-2 font-bold md:text-xl text-md text-blue-950">
+          Your balance:
         </div>
-        <div className=" mx-2 font-semibold ml-4 text-xl">
+        <div className=" md:mx-2 font-semibold md:ml-4 text-xl">
           Rs. {formattedValue}
         </div>
       </div>
