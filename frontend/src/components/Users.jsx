@@ -33,7 +33,7 @@ export const Users = () => {
 
   return (
     <>
-      <div className="font-bold text-xl">Find People</div>
+      <div className="font-medium mt-2 text-xl">Find People</div>
       <div className="my-2 px-4">
         <input
           type="text"
@@ -52,7 +52,7 @@ export const Users = () => {
           height="300.000000pt"
           viewBox="0 0 300.000000 300.000000"
           preserveAspectRatio="xMidYMid meet"
-          className="w-60 h-60"
+          className="w-60 h-60 md:w-[400px] md:h-[400px]"
         >
           {" "}
           <g
@@ -71,7 +71,7 @@ export const Users = () => {
           </g>{" "}
         </svg>
       </div>
-      <div className="flex relative flex-col h-[370px] justify-center z-20 ">
+      <div className="flex relative flex-col h-[360px] justify-center z-20 ">
         <div className="flex-grow rounded-md overflow-y-auto border p-4 justify-center">
           {users.length > 0 ? (
             users.map((user) => (
@@ -172,7 +172,7 @@ function User({ user }) {
           }}
           className="flex flex-col justify-center h-ful"
         >
-          <div className="text-xs  sm:text-base">
+          <div className="sm:text-base">
             {user.firstname} {user.lastname}
           </div>
         </div>
