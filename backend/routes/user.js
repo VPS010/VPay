@@ -127,7 +127,7 @@ router.put("/update", UserAuth, async (req, res) => {
             updates.firstname = firstname;
         }
         if (lastname) {
-            updates.lastname = lastame;
+            updates.lastname = lastname;
         }
         if (password) {
             updates.password = password;
