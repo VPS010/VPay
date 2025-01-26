@@ -26,5 +26,4 @@ VPay is a simple online transaction app prototype aimed at exploring the core fu
 - Two-factor authentication (2FA).
 - Add More featues to Admin dashboard and for platform scalability.
 
-Contributions are welcome to help make VPay even better! Feel free to fork the repo, create a branch, and submit a pull request.
 ❤️
